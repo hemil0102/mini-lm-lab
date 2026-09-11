@@ -34,14 +34,20 @@ if __name__ == "__main__":
         print(f"({a},{b})\t\t{out[0]}\t{out[1]}")
 
     print()
-    print("-- 여러 층 쌓기 (아직 학습 안 함, 무작위 가중치) --")
-    rng = np.random.default_rng(seed=42)
-    w1 = rng.uniform(-1, 1, size=(2, 3))  # 입력 2개 -> 은닉층 뉴런 3개
-    t1 = rng.uniform(0, 1, size=3)
-    w2 = rng.uniform(-1, 1, size=(3, 1))  # 은닉층 3개 -> 출력 뉴런 1개
-    t2 = rng.uniform(0, 1, size=1)
+    print("-- 여러 층 쌓기: 은닉층 3개짜리 신경망 (전부 직접 정한 가중치, 손 계산 가능) --")
+    # 은닉층 뉴런 3개: [AND뉴런, OR뉴런, "숙제만 보는" 뉴런]
+    w1 = np.array([
+        [1, 1, 1],  # 입력1(숙제) -> [AND, OR, 숙제전용]
+        [1, 1, 0],  # 입력2(청소) -> [AND, OR, 숙제전용] (숙제전용은 청소를 아예 안 봄)
+    ])
+    t1 = np.array([1.5, 0.5, 0.5])
 
-    inputs = np.array([1, 0])
-    hidden = layer(inputs, w1, t1)
-    output = layer(hidden, w2, t2)
-    print(f"입력={inputs} -> 은닉층 출력={hidden} -> 최종 출력={output}")
+    # 출력층 뉴런 1개: 은닉층 3개 중 2개 이상 켜져야 최종 허락
+    w2 = np.array([[1], [1], [1]])
+    t2 = np.array([1.5])
+
+    for a, b in [(0, 0), (0, 1), (1, 0), (1, 1)]:
+        inputs = np.array([a, b])
+        hidden = layer(inputs, w1, t1)
+        output = layer(hidden, w2, t2)
+        print(f"입력=({a},{b}) -> 은닉층 출력={hidden} -> 최종 출력={output[0]}")
