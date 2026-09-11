@@ -30,3 +30,8 @@
 - 2026-09-12: GitHub 레포지토리 생성 및 푸시 완료 — https://github.com/hemil0102/mini-lm-lab (public)
 - 2026-09-12: 책 45쪽 "문제 입력" 시각화 (input_shapes_demo.py/png) — 이미지=2차원 배열, 소리(스펙트로그램)=2차원 배열을 직접 그려서 확인. STUDY.md에 정리.
 - 2026-09-12: Stage 3 이후에 "해석가능성 실습" 추가하기로 결정 (ROADMAP.md에 반영). AI로 AI를 분석하는 아이디어(자동화된 해석)도 시도 예정.
+
+## 세션: 토폴로지 / GPU·RAM 수요 질문
+- 책 45~46쪽 "토폴로지 정의"(입력 연결/출력 연결), "높은 층"의 역할, 시냅스 강도 vs 연결 개념 차이를 topology_demo.py 시각화(topology_demo.png)로 설명 완료. STUDY.md에 뒤늦게 기록(이전 턴에서 누락됐던 것 이번에 보완).
+- 딥러닝이 GPU/RAM 수요를 늘린 이유, CPU가 쓸모없어진 게 아니라 역할이 나뉜 것이라는 설명 완료 및 STUDY.md 기록. 용어집에 CPU vs GPU, VRAM 추가.
+- 다음: Stage 3(학습/역전파, numpy로 직접 구현) 진행 준비.
