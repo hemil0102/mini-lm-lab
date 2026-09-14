@@ -47,3 +47,7 @@
 - gradient_descent.py 작성 및 터미널에서 실행 확인, 손 계산과 첫 스텝 결과 일치 검증
 - STUDY.md에 학습률(learning rate) 용어 및 Q&A 기록
 - 다음: 원래 뉴런(가중치 2개, AND/OR류)에도 경사하강법 적용해보기
+
+## 세션: 개발 환경 - VS Code 설치
+- 터미널로만 결과 확인하는 게 불편하다는 요청으로 VS Code + Python/Pylance 확장 설치, 프로젝트 폴더를 VS Code로 열어둠 (brew install --cask visual-studio-code)
+- 앞으로는 사용자가 VS Code ▶ 버튼으로 직접 코드 실행/결과 확인, 터미널은 한글 폰트 필요한 시각화·git push·gh 명령 등 특수한 경우에만 사용하기로 CLAUDE.md에 기록
