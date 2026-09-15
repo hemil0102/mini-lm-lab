@@ -25,12 +25,22 @@ def layer(inputs, weights, thresholds):
     # [AI 용어] inputs @ weights : 모든 뉴런의 "가중합"을 행렬곱 한 번으로 계산.
     # [문법] "@"는 파이썬의 행렬곱 전용 연산자 -- Swift에는 이런 연산자가 없어서
     # 보통 반복문을 직접 돌리거나 별도 라이브러리 함수를 불러야 함.
+    #
+    # [예시] inputs=[1, 0], weights=[[1,1],[1,1]] (AND뉴런/OR뉴런용 가중치 2줄)이면:
+    #   AND뉴런 열(첫 번째 열)=[1,1] -> 1*1 + 0*1 = 1
+    #   OR뉴런  열(두 번째 열)=[1,1] -> 1*1 + 0*1 = 1
+    #   즉 weighted_sums = [1, 1] -- 뉴런마다 따로 계산한 것과 결과가 완전히 같고, 한 번에 나온다는 점만 다름.
     weighted_sums = inputs @ weights
     # [AI 용어] 뉴런마다 자기 threshold와 비교 -- 벡터 전체에 한 번에 적용됨(브로드캐스팅, broadcasting).
     # 브로드캐스팅 = "숫자 하나짜리 규칙을 배열 전체 각 칸에 자동으로 적용해주는 numpy 기능" --
     # 반복문(for) 없이 weighted_sums의 모든 원소를 thresholds의 같은 위치 원소와 한 번에 비교해줌.
     # [문법] ".astype(int)"는 numpy 배열의 자료형(dtype)을 바꾸는 메서드 -- True/False(불리언)를
     # 1/0(정수)로 바꿔줌. Swift로 치면 Bool을 Int(bool)로 캐스팅하는 것과 비슷한 역할.
+    #
+    # [예시] weighted_sums=[1, 1], thresholds=[1.5, 0.5] 이면:
+    #   1 > 1.5 -> False (AND뉴런: 문턱을 못 넘음)
+    #   1 > 0.5 -> True  (OR뉴런: 문턱을 넘음)
+    #   -> [False, True] -> .astype(int) -> [0, 1]  (반복문 없이 두 비교가 한 번에 처리됨 = 브로드캐스팅)
     return (weighted_sums > thresholds).astype(int)
 
 

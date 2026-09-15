@@ -25,6 +25,10 @@ def gradient(x, pred, target):
     # 나타내는 값. 이 부호(+/-)를 보고 w를 어느 쪽으로 밀지 정함(경사하강법의 나침반 역할).
     # 손실 (w*x - target)^2 을 w에 대해 미분하면 2*(pred-target)*x 가 된다.
     # (미분 과정은 생략 — 결과 공식만 사용)
+    #
+    # [예시] x=2, pred=2, target=10 이면: 2 * (2-10) * 2 = 2 * (-8) * 2 = -32.
+    #   음수(-32)라는 건 "w를 늘리면 loss가 줄어드는 방향"이라는 뜻 -- 그래서 학습 루프에서
+    #   w = w - learning_rate * grad 를 하면 마이너스가 두 번 곱해져서 결국 w가 커지는 쪽으로 움직임.
     return 2 * (pred - target) * x
 
 if __name__ == "__main__":

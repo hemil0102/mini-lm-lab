@@ -18,6 +18,12 @@ def neuron(inputs, weights, threshold):
     # [문법] "sum(... for ... in ...)"는 제너레이터 표현식(generator expression) --
     # 리스트를 통째로 안 만들고 값을 하나씩 계산해서 바로 sum()에 넘겨줌.
     # Swift로 치면 zip(inputs, weights).map { $0 * $1 }.reduce(0, +) 한 줄을 이렇게 쓴 것과 같음.
+    #
+    # [예시] inputs=[1, 0], weights=[1, 1] 이 들어오면:
+    #   1) zip(inputs, weights) -> (1, 1) 과 (0, 1), 이렇게 두 쌍을 순서대로 만듦
+    #   2) "x * w for x, w in ..." -> 각 쌍마다 x*w 계산: 1*1=1, 0*1=0 -> 값 두 개(1, 0)가 하나씩 만들어짐
+    #   3) sum(...) -> 그 값들을 다 더함: 1 + 0 = 1
+    #   즉 weighted_sum = 1 이 된다. (입력이 [1, 1]이면 1*1 + 1*1 = 2, [0, 0]이면 0)
     weighted_sum = sum(x * w for x, w in zip(inputs, weights))
     # [AI 용어] weighted_sum = "가중합" -- 각 입력에 가중치를 곱해서 다 더한 값. 뉴런이 최종 판단 전에 보는 "점수".
 

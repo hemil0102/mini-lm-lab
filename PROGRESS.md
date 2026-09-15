@@ -55,3 +55,7 @@
 ## 세션: 기존 코드에 문법+AI용어 주석 소급 추가
 - neuron.py, layer.py, input_shapes_demo.py, gradient_descent.py에 `# [문법]`/`# [AI 용어]` 주석 추가 (동작은 동일, 전부 재실행해서 기존 출력과 일치 확인)
 - CLAUDE.md 규칙 갱신: 앞으로 새 파일마다 문법 주석 + AI 용어 주석 + 흐름 설명(docstring)을 기본 포함하기로 함
+
+## 세션: 복잡한 계산식에 [예시] 주석 추가
+- neuron.py(sum+zip), layer.py(행렬곱, 브로드캐스팅 비교), gradient_descent.py(기울기 공식), input_shapes_demo.py(주파수 인덱스 계산)에 구체적 입력값으로 단계별 계산 예시 주석 추가, 재실행해서 기존 출력과 일치 확인
+- CLAUDE.md 규칙에 "[예시] 주석" 항목 추가 — 앞으로 압축된 계산식엔 항상 구체적 예시 포함

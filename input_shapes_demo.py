@@ -37,6 +37,10 @@ spectrogram = np.zeros((freq_bins, time_steps))
 for t in range(time_steps):
     f = int(t / time_steps * freq_bins)
     # [문법] int(...) 는 실수를 정수로 변환(형변환) -- Swift의 Int(someDouble)과 같은 역할.
+    #
+    # [예시] time_steps=12, freq_bins=6일 때 t=0이면: 0/12*6=0.0 -> int(0.0)=0 (맨 아래 주파수 칸)
+    #   t=6이면: 6/12*6=3.0 -> int(3.0)=3 (중간 칸). t=11이면: 11/12*6=5.5 -> int(5.5)=5 (맨 위 칸)
+    #   -> 시간(t)이 흐를수록 f가 0에서 5까지 점점 커짐 = "시간이 지나며 저음에서 고음으로 올라가는" 효과.
     spectrogram[f, t] = 1.0
     if f + 1 < freq_bins:
         spectrogram[f + 1, t] = 0.4  # 살짝 번지는 느낌
