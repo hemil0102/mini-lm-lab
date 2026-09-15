@@ -51,3 +51,7 @@
 ## 세션: 개발 환경 - VS Code 설치
 - 터미널로만 결과 확인하는 게 불편하다는 요청으로 VS Code + Python/Pylance 확장 설치, 프로젝트 폴더를 VS Code로 열어둠 (brew install --cask visual-studio-code)
 - 앞으로는 사용자가 VS Code ▶ 버튼으로 직접 코드 실행/결과 확인, 터미널은 한글 폰트 필요한 시각화·git push·gh 명령 등 특수한 경우에만 사용하기로 CLAUDE.md에 기록
+
+## 세션: 기존 코드에 문법+AI용어 주석 소급 추가
+- neuron.py, layer.py, input_shapes_demo.py, gradient_descent.py에 `# [문법]`/`# [AI 용어]` 주석 추가 (동작은 동일, 전부 재실행해서 기존 출력과 일치 확인)
+- CLAUDE.md 규칙 갱신: 앞으로 새 파일마다 문법 주석 + AI 용어 주석 + 흐름 설명(docstring)을 기본 포함하기로 함
